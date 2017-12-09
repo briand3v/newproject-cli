@@ -1,0 +1,9 @@
+img {
+    width: 15%;
+    height: 15%;
+}
+.content-profile {
+    display: flex;
+    justify-content: space-around;
+
+}

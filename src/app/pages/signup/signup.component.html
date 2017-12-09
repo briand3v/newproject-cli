@@ -1,0 +1,36 @@
+<p>
+  signup works!
+</p>
+
+<form #myForm="ngForm" novalidate>
+  <p> Username
+    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #myUsername="ngModel" minlength="6" required
+    />
+  </p>
+  <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+    <p [hidden]="!myUsername.errors.minlength">
+
+      Username must be at least 6 characters long.
+    </p>
+
+  </div>
+
+  <p> Password
+    <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #myPassword="ngModel" required />
+  </p>
+  <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+    <p [hidden]="!myPassword.errors.required">
+      Password required!!
+    </p>
+  </div>
+  <input type="submit" class="form-control" (click)="signup()" class="btn btn-success" value="Register">
+</form>
+
+<p>
+  You're already register?
+  <a routerLink="/login" routerLinkActive="active">login</a>
+</p>
+
+<p>
+  {{me}}
+</p>
