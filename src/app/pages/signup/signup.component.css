@@ -1,0 +1,58 @@
+.container-signup{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+    align-content: stretch;
+    width: 50%;
+    height: 50%;
+}
+
+
+/* inputs errors */
+
+.ng-touched {
+    border-color: blue;
+  }
+  
+  .ng-touched.ng-invalid {
+    border-color: red;
+  }
+  
+  .ng-touched.ng-valid {
+    border-color: green;
+  }
+
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .alert-danger{
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  /* ///////// */
+
+  .signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+    height: 100vh;
+    top: 100px;
+  }
+ 
+  .contain-form {
+    width: 70%;
+  }
+  .btn-signup {
+    display: flex;
+    justify-content: center;
+  }
+  

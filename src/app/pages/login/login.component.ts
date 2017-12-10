@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     password: ''
   });
 
+
   error: string;
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.error = null;
     this.authService.login(this.user)
       .subscribe(
-      () => this.router.navigate(['/user/:id']),
+      () => this.router.navigate(['/user/' + this.user.username]),
       (err) => this.error = err
       );
   }

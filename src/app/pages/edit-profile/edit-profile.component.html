@@ -1,0 +1,55 @@
+<div class="submit-changes">
+  <div class="x">
+    <i class="remove icon" [routerLink]="['/user', username.username]"></i>
+  </div>
+  <span class="grey-name">Edit Profile</span>
+  <div class="v">
+    <i class="checkmark icon" (click)="updateUser()"></i>
+  </div>
+
+</div>
+
+<div class="image-container">
+  <div class="ui segment">
+    <img class="ui top aligned" src="https://i.pinimg.com/736x/53/a2/a3/53a2a3b4b027af4ec3764547227de116--small-dog-breeds-dog-facts.jpg"
+      alt="">
+    <div class="username">
+      <span class="grey-name">Profile Name</span>
+      <p>brian_bmx</p>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="edit-container">
+
+    <form class="ui form" #myForm="ngForm">
+
+      <div class="field">
+        <label>Title</label>
+        <input type="text" name="first-name" [(ngModel)]="formUpdate.title" placeholder="title">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input type="text" name="last-name" [(ngModel)]="formUpdate.description" placeholder="Description">
+      </div>
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" name="last-name" [(ngModel)]="formUpdate.firstName" placeholder="First Name">
+      </div>
+      <div class="field">
+        <label>Last name</label>
+        <input type="text" name="last-name" [(ngModel)]="formUpdate.lastName" placeholder="Last name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="last-name" [(ngModel)]="formUpdate.email" placeholder="Email">
+      </div>
+
+    </form>
+
+  </div>
+</div>
+<br>
+<div class="change-password">
+  <p>Change Password</p>
+</div>

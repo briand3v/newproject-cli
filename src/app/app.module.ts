@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgSemanticModule } from 'ng-semantic';
 
 
 
@@ -17,6 +18,7 @@ import { RequireAnonGuard } from './guards/require-anon.guard';
 import { AuthService } from './services/auth.service';
 import { ProfileService } from './services/profile.service';
 import { HomeService } from './services/home.service';
+import { UserService } from './services/user.service';
 
 
 // components
@@ -25,12 +27,15 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 const appRoutes: Routes = [
   { path: 'signup', canActivate: [RequireAnonGuard], component: SignupComponent },
   { path: 'login', canActivate: [RequireAnonGuard], component: LoginComponent },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'gallery', component: HomeComponent }
+  { path: 'user/:id/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'gallery', component: HomeComponent, canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({
@@ -39,15 +44,18 @@ const appRoutes: Routes = [
     SignupComponent,
     LoginComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
     FormsModule,
+    NgSemanticModule
   ],
   providers: [AuthService, ProfileService, RequireAnonGuard, HomeService, AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

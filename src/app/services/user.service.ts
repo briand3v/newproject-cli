@@ -7,17 +7,21 @@ import { environment } from '../../environments/environment';
 const apiUrl = environment.apiUrl;
 
 @Injectable()
-export class ProfileService {
-
+export class UserService {
 
   constructor(private http: Http) { }
 
-  showAllPhotos() {
-    return this.http.get(apiUrl + '/photos').map((res: Response) => res.json());
+  getUserId(id) {
+    return this.http.get(apiUrl + `/user/${id}`)
+      .map((res: Response) => res.json());
   }
 
-  userDetails() {
-    return this.http.get(apiUrl + '/user/:id').map((res: Response) => res.json());
+  updateUser(id, data) {
+    return this.http.post(apiUrl + `/user/${id}/edit`, data)
+      .map((res: Response) => res.json());
   }
+
+
+
 
 }

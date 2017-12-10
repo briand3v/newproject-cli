@@ -1,9 +1,35 @@
+
+.content-profile {
+    display: flex;
+    justify-content: space-between;
+
+}
+h1 {
+    font-size: 20px;
+}
+
+
 img {
     width: 15%;
     height: 15%;
 }
-.content-profile {
-    display: flex;
-    justify-content: space-around;
 
+.profile {
+    right: 50px;
 }
+
+.btn-edit {
+    display: flex;
+    justify-content: space-between;
+}
+.icons-bar{
+    position: fixed;
+    width: 100%;
+}
+.icons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+

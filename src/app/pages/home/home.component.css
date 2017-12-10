@@ -2,3 +2,7 @@ img {
     width: 50%;
     height: 50%;
 }
+.icons-container {
+    display: flex;
+    justify-content: space-between;
+}

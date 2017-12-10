@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+
 import { error } from 'util';
+import { UserService } from '../../services/user.service';
+
+
+
 
 @Component({
   selector: 'app-profile',
@@ -12,36 +16,85 @@ import { error } from 'util';
 })
 export class ProfileComponent implements OnInit {
 
+
+  value: any;
   photos: Object = [];
   details: Object = [];
-  id: number;
-  private sub: any;
+  dataUser: any;
   user: any;
   error: string;
+  private sub: any;
 
   constructor(
     private profileService: ProfileService,
     private authService: AuthService,
-    private router: Router
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute,
+    // private params: Params
   ) { }
 
   ngOnInit() {
-    this.me();
-  }
-
-  // user
-  me() {
-    this.authService.me()
-      .then((user) => {
-        this.user = user,
-          console.log(this.user);
-      },
-      (err) => this.error = err);
-    console.log(this.user);
+    this.idUser();
+    this.getUserInfo();
   }
 
 
-  // logout provicional it have to appear in the navbar
+
+  idUser() {
+    this.route.params.subscribe(params => {
+      this.value = params['id']; // --> Name must match wanted parameter
+      console.log(this.value);
+    });
+  }
+
+
+  getUserInfo() {
+    this.userService.getUserId(this.value).subscribe((data) => this.dataUser = data);
+  }
+
+  editClick() {
+    this.router.navigate(['/user/' + this.dataUser.username + '/edit']);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////// AuthUser
+  // me() {
+  //   this.authService.me()
+  //     .then((user) => {
+  //       this.user = user,
+  //         console.log(this.user);
+  //     },
+  //     (err) => this.error = err);
+  //   console.log(this.user);
+  // }
+
   logOut() {
     this.authService.logout()
       .subscribe(
@@ -53,15 +106,12 @@ export class ProfileComponent implements OnInit {
       );
     console.log(this.user);
   }
-
-
-  // profile
+  ////////////////////////////////////////////// profile
 
   goGallery() {
     this.router.navigate(['/gallery']);
   }
 
-  // userDetails() {
-  //   this.profileService.userDetails().subscribe((data) => this.details = data);
-  // }
+  // get params user
+
 }

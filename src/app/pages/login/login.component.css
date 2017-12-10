@@ -1,0 +1,30 @@
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+    height: 100vh;
+    top: 100px;
+}
+.input {
+    display: flex;
+    justify-content: center;
+}
+.contain-form {
+    width: 70%;
+  }
+  .btn-login {
+      display: flex;
+      justify-content: center;
+  }
+
+  .bar-icons {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+

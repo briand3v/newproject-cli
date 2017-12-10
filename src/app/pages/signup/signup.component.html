@@ -1,36 +1,95 @@
-<p>
-  signup works!
-</p>
+<!-- <div class="container-signup">
 
-<form #myForm="ngForm" novalidate>
-  <p> Username
-    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #myUsername="ngModel" minlength="6" required
-    />
-  </p>
-  <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
-    <p [hidden]="!myUsername.errors.minlength">
-
-      Username must be at least 6 characters long.
+  <form #myForm="ngForm" novalidate>
+    <p> Username
+      <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #myUsername="ngModel" minlength="6" required/>
     </p>
+    <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+      <p [hidden]="!myUsername.errors.minlength">
 
+        Username must be at least 6 characters long.
+      </p>
+
+    </div>
+
+    <p> Password
+      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #myPassword="ngModel" required />
+    </p>
+    <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+      <p [hidden]="!myPassword.errors.required">
+        Password required!!
+      </p>
+    </div>
+    <input type="submit" class="form-control" (click)="signup()" class="btn btn-success" value="Register">
+  </form>
+
+
+
+  <div class="ui horizontal divider">
+    Or
+  </div>
+  <button class="ui blue button">
+    <a routerLink="/login" routerLinkActive="active">Log In</a>
+  </button>
+
+</div> -->
+
+
+<div class="signup">
+
+  <div class="contain-form">
+    <form #myForm="ngForm" novalidate>
+      <div class="ui two column middle aligned very relaxed stackable grid">
+        <div class="column">
+          <div class="ui form">
+            <div class="field">
+              <label>Username</label>
+              <div class="ui left icon input">
+                <input type="text" placeholder="username" class="form-control" name="username" [(ngModel)]="user.username" #myUsername="ngModel"
+                  minlength="6" required/>
+                <i class="user icon"></i>
+              </div>
+
+              <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+                <p [hidden]="!myUsername.errors.minlength">
+                  Username must be at least 6 characters long.
+                </p>
+              </div>
+
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="ui left icon input">
+                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #myPassword="ngModel" required />
+                <i class="lock icon"></i>
+              </div>
+
+              <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+                <p [hidden]="!myPassword.errors.required">
+                  Password required!!
+                </p>
+              </div>
+
+            </div>
+
+            <div class="btn-signup">
+              <div class="ui big green labeled icon button " (click)="signup()">
+                <i class="signup icon"></i>
+                Sign Up
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="ui horizontal divider">
+          Or
+        </div>
+        <div class="center aligned column">
+          <div class="ui blue submit button" routerLink="/login">Login</div>
+        </div>
+      </div>
+    </form>
   </div>
 
-  <p> Password
-    <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #myPassword="ngModel" required />
-  </p>
-  <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-    <p [hidden]="!myPassword.errors.required">
-      Password required!!
-    </p>
-  </div>
-  <input type="submit" class="form-control" (click)="signup()" class="btn btn-success" value="Register">
-</form>
-
-<p>
-  You're already register?
-  <a routerLink="/login" routerLinkActive="active">login</a>
-</p>
-
-<p>
-  {{me}}
-</p>
+</div>

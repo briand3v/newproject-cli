@@ -1,20 +1,76 @@
-<p>
-  profile works!
-</p>
-<div class="content-profile">
-  <img src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" class="img-circle">
-  <div class="description-user">
-    <div>
-      <h1>{{user.profileName}}</h1>
-      <p>Hello people! my name is alex and this is my current profile, love traveling aorund the wolrd seeing our marvelous
-        staffs
-      </p>
+<div class="text">
+  <div class="ui secondary pointing menu">
+    <a class="active item">
+      Home
+    </a>
+    <a class="item">
+      Messages
+    </a>
+    <a class="item">
+      Friends
+    </a>
+    <div class="right menu">
+      <a class="ui item" (click)="logOut()">
+        Logout
+      </a>
+    </div>
+  </div>
+
+  <div class="content-profile">
+    <img src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" class="img-circle">
+    <div class="description-user">
+      <div class="profile">
+        <h1>{{dataUser.profileName}}</h1>
+        <p>{{dataUser.description}}
+        </p>
+      </div>
+      <br>
+      <div class="btn-edit">
+        <button class=" edit ui blue basic button" (click)="editClick()">edit</button>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="ui fluid three item menu">
+    <a class="item">Home</a>
+    <a class="item">Equipment</a>
+    <a class="item">Settings</a>
+  </div>
+
+  <!-- <sm-button class="positive" (click)="goGallery()" icon="thumbs up">gallery</sm-button>
+  <input type="submit" class="form-control" (click)="me()" class="btn btn-success" value="me"> -->
+
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+
+
+</div>
+
+
+<div class="icons-bar">
+
+  <div class="ui bottom attached warning message">
+    <div class="icons-container">
+
+      <div class="user-icon">
+        <i class="user icon"></i>
+      </div>
+      <div class="square-icon">
+        <i class="add square icon"></i>
+      </div>
+      <div class="list-layout">
+        <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
+      </div>
+
     </div>
   </div>
 </div>
-
-<input type="submit" class="form-control" (click)="goGallery()" class="btn btn-success" value="goGallery">
-
-<input type="submit" class="form-control" (click)="logOut()" class="btn btn-success" value="logout">
-
-<input type="submit" class="form-control" (click)="me()" class="btn btn-success" value="me">
