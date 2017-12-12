@@ -17,9 +17,8 @@ export class HomeService {
   constructor(private http: Http) { }
 
   showAllPhotos() {
-    return this.http.get(apiUrl + '/photos')
-      .toPromise()
-      .then((res: Response) => res.json());
+    return this.http.get(apiUrl + '/photos').map((res: Response) => res.json());
+
   }
 
 }

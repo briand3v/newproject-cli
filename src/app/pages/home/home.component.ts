@@ -26,8 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPhotos() {
-    this.homeService.showAllPhotos()
-      .then(data => this.photos = data);
+    this.homeService.showAllPhotos().subscribe((data) => this.photos = data);
   }
 
   logOut() {

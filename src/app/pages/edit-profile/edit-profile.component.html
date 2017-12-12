@@ -1,6 +1,10 @@
+<!-- <popup #popup1>
+  Add your custom html elements here
+</popup> -->
+
 <div class="submit-changes">
   <div class="x">
-    <i class="remove icon" [routerLink]="['/user', username.username]"></i>
+    <i class="remove icon" (click)="goProfile()"></i>
   </div>
   <span class="grey-name">Edit Profile</span>
   <div class="v">

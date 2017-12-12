@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgSemanticModule } from 'ng-semantic';
-
+// import { PopupModule } from 'ng2-opd-popup';
+// Fileupload
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 // routes
@@ -51,8 +53,10 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
+    // PopupModule.forRoot(),
     FormsModule,
-    NgSemanticModule
+    NgSemanticModule,
+    FileUploadModule
   ],
   providers: [AuthService, ProfileService, RequireAnonGuard, HomeService, AuthGuard,
     UserService

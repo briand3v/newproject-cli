@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
@@ -18,6 +18,14 @@ export class ProfileService {
 
   userDetails() {
     return this.http.get(apiUrl + '/user/:id').map((res: Response) => res.json());
+  }
+
+  createOnePhoto(formData, id) {
+    const options = new RequestOptions();
+    options.withCredentials = true;
+    return this.http
+      .post(apiUrl + `/user/${id}`, formData, options)
+      .map((res: Response) => res.json());
   }
 
 }

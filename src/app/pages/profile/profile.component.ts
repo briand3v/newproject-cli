@@ -3,6 +3,8 @@ import { ProfileService } from '../../services/profile.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+import { FileUploader } from 'ng2-file-upload';
+
 import { error } from 'util';
 import { UserService } from '../../services/user.service';
 
@@ -16,14 +18,27 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-
+  private sub: any;
   value: any;
   photos: Object = [];
+  photoInfo: any;
   details: Object = [];
   dataUser: any;
   user: any;
   error: string;
-  private sub: any;
+
+
+  baseUrl = 'http://localhost:3000';
+  feedbackEnabled = false;
+  processing = false;
+  photo = {
+    filename: '',
+    description: '',
+    // owner: this.value,
+  };
+  uploader: FileUploader = new FileUploader({
+    url: `${this.baseUrl}/user/${this.value}`,
+  });
 
   constructor(
     private profileService: ProfileService,
@@ -40,7 +55,6 @@ export class ProfileComponent implements OnInit {
   }
 
 
-
   idUser() {
     this.route.params.subscribe(params => {
       this.value = params['id']; // --> Name must match wanted parameter
@@ -50,6 +64,7 @@ export class ProfileComponent implements OnInit {
 
 
   getUserInfo() {
+
     this.userService.getUserId(this.value).subscribe((data) => this.dataUser = data);
   }
 
@@ -57,31 +72,24 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/user/' + this.dataUser.username + '/edit']);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  submitForm(theForm) {
+    console.log(theForm);
+    this.feedbackEnabled = true;
+    if (theForm.valid) {
+      this.processing = true;
+      this.uploader.uploadAll();
+      this.uploader.onCompleteItem = (item: any, response: string) => {
+        const fileData = JSON.parse(response);
+        this.photo.filename = fileData.filename;
+        this.profileService
+          .createOnePhoto(this.photo, this.value)
+          .subscribe(result => {
+            this.photoInfo = result,
+              console.log(this.photoInfo.id);
+          });
+      };
+    }
+  }
 
 
   ///////////////////////////////// AuthUser

@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="content-profile">
+  <div class="content-profile" *ngIf="dataUser">
     <img src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" class="img-circle">
     <div class="description-user">
       <div class="profile">
@@ -28,19 +28,16 @@
       <div class="btn-edit">
         <button class=" edit ui blue basic button" (click)="editClick()">edit</button>
       </div>
-
     </div>
   </div>
-  <br>
-  <br>
+
   <div class="ui fluid three item menu">
     <a class="item">Home</a>
     <a class="item">Equipment</a>
     <a class="item">Settings</a>
   </div>
 
-  <!-- <sm-button class="positive" (click)="goGallery()" icon="thumbs up">gallery</sm-button>
-  <input type="submit" class="form-control" (click)="me()" class="btn btn-success" value="me"> -->
+
 
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
@@ -56,6 +53,47 @@
 </div>
 
 
+<!-- .....................upload file........................... -->
+<sm-modal title="Photo" class="basic" #myModal>
+  <modal-content>
+
+    <div class="ui segment">
+      <h2>Upload your photo</h2>
+      <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+
+        <div class="field" [ngClass]="{'has-error': feedbackEnabled && myDescription.errors}">
+          <label>Description</label>
+          <input type="text" name="description" [(ngModel)]="photo.description" #myDescription="ngModel" required minlength="4" [disabled]="processing"
+          />
+          <!-- <div *ngIf="feedbackEnabled && myFlatname.errors">
+                <p *ngIf="myFlatname.errors.required" class="validation">flatname required</p>
+                <p *ngIf="myFlatname.errors.minlength" class="validation">flatname is too short</p>
+              </div> -->
+        </div>
+
+
+        <div class="field" [ngClass]="{'has-error': feedbackEnabled}">
+          <label>Upload a picture </label>
+          <input type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader" required/>
+          <!-- <div *ngIf="feedbackEnabled">
+                <p *ngIf="mymainPicture.errors.required" class="validation">please upload an image of your appartment</p>
+              </div> -->
+        </div>
+
+        <div class="field submit">
+          <button type="submit" [disabled]="processing">Add your Photo</button>
+          <div *ngIf="feedbackEnabled && myForm.invalid">
+            <p class="validation">there are errors in the form, please review the fields</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </modal-content>
+</sm-modal>
+
+
+
+
 <div class="icons-bar">
 
   <div class="ui bottom attached warning message">
@@ -65,7 +103,7 @@
         <i class="user icon"></i>
       </div>
       <div class="square-icon">
-        <i class="add square icon"></i>
+        <i class="add square icon" (click)="myModal.show()"></i>
       </div>
       <div class="list-layout">
         <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
