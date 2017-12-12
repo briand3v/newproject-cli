@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) { }
-
   ngOnInit() {
     this.me();
   }
