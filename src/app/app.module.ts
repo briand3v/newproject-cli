@@ -18,8 +18,7 @@ import { RequireAnonGuard } from './guards/require-anon.guard';
 
 // services
 import { AuthService } from './services/auth.service';
-import { ProfileService } from './services/profile.service';
-import { HomeService } from './services/home.service';
+import { PhotoService } from './services/photo.service';
 import { UserService } from './services/user.service';
 
 
@@ -30,13 +29,16 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { GalleryProfileComponent } from './components/gallery-profile/gallery-profile.component';
+import { PhotoOwnerComponent } from './pages/photo-owner/photo-owner.component';
 
 const appRoutes: Routes = [
   { path: 'signup', canActivate: [RequireAnonGuard], component: SignupComponent },
   { path: 'login', canActivate: [RequireAnonGuard], component: LoginComponent },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/:id/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
-  { path: 'gallery', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'gallery', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'photo/owner/:id/:idPhoto', component: PhotoOwnerComponent, canActivate: [AuthGuard] }
 
 ];
 
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     LoginComponent,
     ProfileComponent,
     HomeComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    GalleryProfileComponent,
+    PhotoOwnerComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ const appRoutes: Routes = [
     NgSemanticModule,
     FileUploadModule
   ],
-  providers: [AuthService, ProfileService, RequireAnonGuard, HomeService, AuthGuard,
+  providers: [AuthService, PhotoService, RequireAnonGuard, AuthGuard,
     UserService
   ],
   bootstrap: [AppComponent]

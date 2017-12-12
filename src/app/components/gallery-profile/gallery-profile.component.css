@@ -1,0 +1,18 @@
+img {
+    width: 30%;
+    height: 30%;
+    margin: 1px;
+}
+
+.contain{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: flex-start;
+}
+/* .main {
+     display: flex;
+     justify-content: center;
+} */

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -7,7 +7,6 @@ import { FileUploader } from 'ng2-file-upload';
 
 import { error } from 'util';
 import { UserService } from '../../services/user.service';
-
 
 
 
@@ -37,11 +36,11 @@ export class ProfileComponent implements OnInit {
     // owner: this.value,
   };
   uploader: FileUploader = new FileUploader({
-    url: `${this.baseUrl}/user/${this.value}`,
+    url: `${this.baseUrl}/upload`,
   });
 
   constructor(
-    private profileService: ProfileService,
+    private photoService: PhotoService,
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
@@ -52,6 +51,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.idUser();
     this.getUserInfo();
+    console.log(this.photos);
   }
 
 
@@ -81,27 +81,17 @@ export class ProfileComponent implements OnInit {
       this.uploader.onCompleteItem = (item: any, response: string) => {
         const fileData = JSON.parse(response);
         this.photo.filename = fileData.filename;
-        this.profileService
-          .createOnePhoto(this.photo, this.value)
+        this.photoService
+          .createOnePhoto(this.photo)
           .subscribe(result => {
             this.photoInfo = result,
-              console.log(this.photoInfo.id);
+              console.log(this.photoInfo);
           });
       };
     }
   }
 
 
-  ///////////////////////////////// AuthUser
-  // me() {
-  //   this.authService.me()
-  //     .then((user) => {
-  //       this.user = user,
-  //         console.log(this.user);
-  //     },
-  //     (err) => this.error = err);
-  //   console.log(this.user);
-  // }
 
   logOut() {
     this.authService.logout()
@@ -116,10 +106,11 @@ export class ProfileComponent implements OnInit {
   }
   ////////////////////////////////////////////// profile
 
+
+  // profile
+
   goGallery() {
     this.router.navigate(['/gallery']);
   }
-
-  // get params user
 
 }

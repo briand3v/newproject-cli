@@ -24,30 +24,72 @@
 
 <div *ngFor="let photo of photos">
   <ul>
-    <img src="{{photo.img}}" alt="">
+    <img src="http://localhost:3000{{photo.img}}" (click)="photoOwner(photo)" alt="">
     <p>{{photo.description}}</p>
   </ul>
 </div>
 
 
 
+<!-- .....................upload file........................... -->
+<sm-modal title="Photo" class="basic" #myModal>
+  <modal-content>
+
+    <div class="ui segment">
+      <h2>Upload your photo</h2>
+      <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+
+        <div class="field" [ngClass]="{'has-error': feedbackEnabled && myDescription.errors}">
+          <label>Description</label>
+          <input type="text" name="description" [(ngModel)]="photo.description" #myDescription="ngModel" required minlength="4" [disabled]="processing"
+          />
+          <!-- <div *ngIf="feedbackEnabled && myFlatname.errors">
+                  <p *ngIf="myFlatname.errors.required" class="validation">flatname required</p>
+                  <p *ngIf="myFlatname.errors.minlength" class="validation">flatname is too short</p>
+                </div> -->
+        </div>
+
+
+        <div class="field" [ngClass]="{'has-error': feedbackEnabled}">
+          <label>Upload a picture </label>
+          <input type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader" required/>
+          <!-- <div *ngIf="feedbackEnabled">
+                  <p *ngIf="mymainPicture.errors.required" class="validation">please upload an image of your appartment</p>
+                </div> -->
+        </div>
+
+        <div class="field submit">
+          <button type="submit" [disabled]="processing">Add your Photo</button>
+          <div *ngIf="feedbackEnabled && myForm.invalid">
+            <p class="validation">there are errors in the form, please review the fields</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </modal-content>
+</sm-modal>
+
+
+
+
+
 
 <!-- -///////////////////// icons-bar ///////////////////////////////////// -->
-<div class="icons-bar">
+<div class="footer">
 
   <div class="ui bottom attached warning message">
-    <div class="icons-container">
+    <!-- <div class="icons-container"> -->
 
-      <div class="user-icon">
-        <i class="user icon" [routerLink]="['/user', user.username]" routerLinkActive="active"></i>
-      </div>
-      <div class="square-icon">
-        <i class="add square icon"></i>
-      </div>
-      <div class="list-layout">
-        <i class="list layout icon"></i>
-      </div>
-
+    <div class="user-icon">
+      <i class="user icon" routerLink="/user/{{user.username}}"></i>
     </div>
+    <div class="square-icon">
+      <i class="add square icon" (click)="myModal.show()"></i>
+    </div>
+    <div class="list-layout">
+      <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
+    </div>
+
+    <!-- </div> -->
   </div>
 </div>

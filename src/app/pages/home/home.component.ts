@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../services/home.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Photos } from '../../models/photos.model';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+
+import { PhotoService } from '../../services/photo.service';
+
+import { FileUploader } from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-home',
@@ -13,12 +17,31 @@ export class HomeComponent implements OnInit {
 
 
   photos: Object = [];
+  photoInfo: any;
   user: any;
   error: string;
 
 
 
-  constructor(private homeService: HomeService, private authService: AuthService, private router: Router) { }
+  baseUrl = 'http://localhost:3000';
+  feedbackEnabled = false;
+  processing = false;
+  photo = {
+    filename: '',
+    description: '',
+    // owner: this.value,
+  };
+  uploader: FileUploader = new FileUploader({
+    url: `${this.baseUrl}/upload`,
+  });
+
+
+
+  constructor(private authService: AuthService,
+    private router: Router,
+    private photoService: PhotoService,
+
+  ) { }
 
   ngOnInit() {
     this.getPhotos();
@@ -26,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPhotos() {
-    this.homeService.showAllPhotos().subscribe((data) => this.photos = data);
+    this.photoService.showAllPhotos().subscribe((data) => this.photos = data);
   }
 
   logOut() {
@@ -41,6 +64,30 @@ export class HomeComponent implements OnInit {
   }
   me() {
     this.authService.me().then((user) => this.user = user);
+  }
+
+  submitForm(theForm) {
+    console.log(theForm);
+    this.feedbackEnabled = true;
+    if (theForm.valid) {
+      this.processing = true;
+      this.uploader.uploadAll();
+      this.uploader.onCompleteItem = (item: any, response: string) => {
+        const fileData = JSON.parse(response);
+        this.photo.filename = fileData.filename;
+        this.photoService
+          .createOnePhoto(this.photo)
+          .subscribe(result => {
+            this.photoInfo = result,
+              console.log(this.photoInfo);
+          });
+      };
+    }
+  }
+
+  photoOwner(photo) {
+    console.log(photo);
+    this.router.navigate(['/photo/owner/', photo.username, photo._id]);
   }
 
 }

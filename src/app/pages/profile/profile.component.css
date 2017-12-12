@@ -28,7 +28,7 @@ img {
 }
 .icons-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 
@@ -61,4 +61,24 @@ img {
 .img-description{
     display: flex;
     justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 15vw;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+    border-top: 1px solid #888787;
+    background-color:white;
+}
+.message {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
