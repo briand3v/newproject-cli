@@ -3,6 +3,8 @@ import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+import { IPopup } from 'ng2-semantic-ui';
+
 import { FileUploader } from 'ng2-file-upload';
 
 import { error } from 'util';
@@ -17,14 +19,20 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+
   private sub: any;
-  value: any;
+  username: any;
   photos: Object = [];
   photoInfo: any;
   details: Object = [];
   dataUser: any;
   user: any;
   error: string;
+  modal = true;
+
+
+  checkOwner: boolean;
+
 
 
   baseUrl = 'http://localhost:3000';
@@ -48,24 +56,48 @@ export class ProfileComponent implements OnInit {
     // private params: Params
   ) { }
 
+
+  private _condition: boolean;
+  public openPopup(popup: IPopup) {
+    if (this._condition) {
+      popup.open();
+    }
+  }
+
   ngOnInit() {
     this.idUser();
     this.getUserInfo();
+    // this.checkUser();
     console.log(this.photos);
   }
 
 
   idUser() {
     this.route.params.subscribe(params => {
-      this.value = params['id']; // --> Name must match wanted parameter
-      console.log(this.value);
+      this.username = params['id']; // --> Name must match wanted parameter
+      console.log(this.username);
     });
   }
 
+  // checkUser() {
+  //   if (this.username === 'brian_bmx') {
+  //     this.checkOwner = true;
+  //   } else {
+  //     this.checkOwner = false;
+  //   }
+  // }
+
 
   getUserInfo() {
-
-    this.userService.getUserId(this.value).subscribe((data) => this.dataUser = data);
+    this.userService.getUserId(this.username).subscribe((data) => {
+      this.dataUser = data;
+      if (this.username === 'brian_bmx') {
+        this.checkOwner = true;
+      } else {
+        this.checkOwner = false;
+      }
+      console.log(this.checkOwner);
+    });
   }
 
   editClick() {
@@ -84,12 +116,19 @@ export class ProfileComponent implements OnInit {
         this.photoService
           .createOnePhoto(this.photo)
           .subscribe(result => {
-            this.photoInfo = result,
-              console.log(this.photoInfo);
+            this.photoInfo = result;
+            console.log(this.photoInfo);
           });
       };
     }
   }
+
+
+  goToGallery() {
+    this.router.navigate(['/gallery']);
+  }
+
+
 
 
 

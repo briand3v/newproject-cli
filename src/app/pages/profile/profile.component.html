@@ -1,4 +1,5 @@
-<div class="text">
+<!-- <div *ngIf="checkOwner" class="text"> -->
+<div class="header">
   <div class="ui secondary pointing menu">
     <a class="active item">
       Home
@@ -15,6 +16,9 @@
       </a>
     </div>
   </div>
+  <!-- </div> -->
+
+
 
   <div class="content-profile" *ngIf="dataUser">
     <img class="profile-image" src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" class="img-circle">
@@ -25,11 +29,18 @@
         </p>
       </div>
       <br>
-      <div class="btn-edit">
-        <button class=" edit ui blue basic button" (click)="editClick()">edit</button>
+
+      <div *ngIf="checkOwner">
+
+        <div class="btn-edit">
+          <button class=" edit ui blue basic button" (click)="editClick()">edit</button>
+        </div>
+
       </div>
+
     </div>
   </div>
+
 
   <div class="ui fluid three item menu">
     <a class="item">Home</a>
@@ -38,38 +49,55 @@
   </div>
 
 
-  <app-gallery-profile></app-gallery-profile>
-
-
 
 </div>
 
 
+
+<app-gallery-profile></app-gallery-profile>
+
+
 <!-- .....................upload file........................... -->
-<sm-modal title="Photo" class="basic" #myModal>
+
+
+<!-- <sm-modal title="Photo" class="" #myModal>
   <modal-content>
 
     <div class="ui segment">
       <h2>Upload your photo</h2>
-      <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+      
+    </div>
+  </modal-content>
+  <modal-actions>
+    <div class="ui buttons">
+      <div class="ui button primary" (click)="myModal.hide()" (click)="goToGallery()">Close modal</div>
+    </div>
+  </modal-actions>
+</sm-modal> -->
+
+
+
+
+
+<div class=" coll">
+  <div [suiCollapse]="!collapse">
+    <div class="ui segment">
+      <form (ngSubmit)="submitForm(myForm)" class="ui reply form" #myForm="ngForm" novalidate>
 
         <div class="field" [ngClass]="{'has-error': feedbackEnabled && myDescription.errors}">
           <label>Description</label>
+
           <input type="text" name="description" [(ngModel)]="photo.description" #myDescription="ngModel" required minlength="4" [disabled]="processing"
           />
-          <!-- <div *ngIf="feedbackEnabled && myFlatname.errors">
-                <p *ngIf="myFlatname.errors.required" class="validation">flatname required</p>
-                <p *ngIf="myFlatname.errors.minlength" class="validation">flatname is too short</p>
-              </div> -->
         </div>
-
-
         <div class="field" [ngClass]="{'has-error': feedbackEnabled}">
           <label>Upload a picture </label>
-          <input type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader" required/>
-          <!-- <div *ngIf="feedbackEnabled">
-                <p *ngIf="mymainPicture.errors.required" class="validation">please upload an image of your appartment</p>
-              </div> -->
+          <input id="uploadFile" placeholder="Choose File" disabled="disabled" class="inputfile" />
+          <div class="fileUpload btn btn-primary">
+            <span>Upload</span>
+            <input id="uploadBtn" class="upload" type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader"
+              required/>
+          </div>
         </div>
 
         <div class="field submit">
@@ -80,27 +108,20 @@
         </div>
       </form>
     </div>
-  </modal-content>
-</sm-modal>
-
-
-
+  </div>
+</div>
 
 <div class="footer">
 
   <div class="ui bottom attached warning message">
-    <!-- <div class="icons-container"> -->
-
     <div class="user-icon">
       <i class="user icon"></i>
     </div>
     <div class="square-icon">
-      <i class="add square icon" (click)="myModal.show()"></i>
+      <i class="add square icon" (click)="collapse = !collapse"></i>
     </div>
     <div class="list-layout">
       <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
     </div>
-
-    <!-- </div> -->
   </div>
 </div>

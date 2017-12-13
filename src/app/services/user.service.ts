@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
+
 const apiUrl = environment.apiUrl;
 
 @Injectable()

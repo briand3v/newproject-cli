@@ -34,14 +34,6 @@ export class AuthService {
     this.userChange.next(user);
   }
 
-
-  // signup(user) {
-  //   return this.http.post(apiUrl + '/signup', user)
-  //     .map((res: Response) => res.json());
-  // }
-
-
-
   signup(user: User) {
     const options = new RequestOptions();
     options.withCredentials = true;
@@ -51,15 +43,6 @@ export class AuthService {
         return user;
       });
   }
-
-
-  // login(user) {
-  //   return this.http.post(apiUrl + '/login', user)
-  //     .map((res: Response) => res.json());
-  // }
-
-
-
 
   login(user: User) {
     const options = new RequestOptions();
@@ -71,11 +54,6 @@ export class AuthService {
       });
   }
 
-  // logout() {
-  //   return this.http.post(apiUrl + '/logout', {})
-  //     .map(res => res.json());
-  // }
-
   logout() {
     const options = new RequestOptions();
     options.withCredentials = true;
@@ -86,17 +64,7 @@ export class AuthService {
       });
   }
 
-  // me() {
-  //   return this.http.get(apiUrl + '/me')
-  //     .toPromise()
-  //     .then(res => res.json()
-  //     );
-  // }
-
   me() {
-    // if (this.loaded) {
-    //   return Promise.resolve(this.user);
-    // }
     const options = new RequestOptions();
     options.withCredentials = true;
     return this.http.get(apiUrl + '/me', options)
@@ -112,5 +80,4 @@ export class AuthService {
         }
       });
   }
-
 }

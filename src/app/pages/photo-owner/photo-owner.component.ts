@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-photo-owner',
@@ -9,16 +10,33 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class PhotoOwnerComponent implements OnInit {
 
-  username: any;
-  photoId: any;
-  photoOwner: object;
 
-  constructor(private photoService: PhotoService, private route: ActivatedRoute, ) { }
+  username: any;
+  dataUser: any;
+  checkOwner: boolean;
+  photoId: any;
+  photoOwner: any;
+  deleteMessage: string;
+
+
+  comments: any;
+
+  formComment = {
+    comment: ''
+  };
+
+  constructor(
+    private photoService: PhotoService,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.idUser();
     this.idPhoto();
     this.getPhotoByOwner();
+    this.getUserInfo();
   }
 
   idUser() {
@@ -41,5 +59,37 @@ export class PhotoOwnerComponent implements OnInit {
 
   }
 
+  getUserInfo() {
+    this.userService.getUserId(this.username).subscribe((data) => {
+      this.dataUser = data;
+      if (this.username === 'brian_bmx') {
+        this.checkOwner = true;
+      } else {
+        this.checkOwner = false;
+      }
+      console.log(this.checkOwner);
+    });
+  }
+
+  deletePhoto() {
+    this.photoService.deletePhoto(this.username, this.photoId)
+      .then((message) => {
+        this.deleteMessage = message,
+          this.router.navigate(['/user/', this.username]);
+      });
+  }
+
+  ///////////////////////// comments ////////////////////////////////////
+
+  addComment() {
+    this.photoService.addComment(this.photoId, this.formComment).subscribe();
+    //
+  }
+  showComments() {
+    this.photoService.showComments(this.photoId).subscribe((comments) => {
+      this.comments = comments,
+        console.log(this.comments);
+    });
+  }
 
 }
