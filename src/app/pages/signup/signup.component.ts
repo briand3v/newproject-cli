@@ -11,6 +11,7 @@ import { User } from '../../models/user.model';
 })
 export class SignupComponent implements OnInit {
 
+  something: any;
   user = new User({
     username: '',
     password: '',
@@ -41,7 +42,7 @@ export class SignupComponent implements OnInit {
   signup() {
     this.error = null;
     this.authService.signup(this.user).subscribe(
-      () => this.router.navigate(['/user/:id']),
+      (data) => this.something = data,
       (err) => this.error = err
     );
   }
