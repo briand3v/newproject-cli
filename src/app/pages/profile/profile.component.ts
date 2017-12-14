@@ -10,6 +10,8 @@ import { FileUploader } from 'ng2-file-upload';
 import { error } from 'util';
 import { UserService } from '../../services/user.service';
 
+import { environment } from '../../../environments/environment';
+
 
 
 @Component({
@@ -36,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
 
 
-  baseUrl = 'http://localhost:3000';
+  baseUrl = environment.apiUrl;
   feedbackEnabled = false;
   processing = false;
   photo = {
