@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
   user: any;
   error: string;
   modal = true;
+  collapse: any;
 
 
   checkOwner: boolean;
