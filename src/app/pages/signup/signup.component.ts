@@ -13,7 +13,8 @@ export class SignupComponent implements OnInit {
 
   user = new User({
     username: '',
-    password: ''
+    password: '',
+    profileName: ''
   });
 
   me: any;

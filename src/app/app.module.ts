@@ -32,8 +32,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { GalleryProfileComponent } from './components/gallery-profile/gallery-profile.component';
 import { PhotoOwnerComponent } from './pages/photo-owner/photo-owner.component';
+import { FirstpageComponent } from './pages/firstpage/firstpage.component';
 
 const appRoutes: Routes = [
+  { path: '', canActivate: [RequireAnonGuard], component: FirstpageComponent },
   { path: 'signup', canActivate: [RequireAnonGuard], component: SignupComponent },
   { path: 'login', canActivate: [RequireAnonGuard], component: LoginComponent },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard] },
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     HomeComponent,
     EditProfileComponent,
     GalleryProfileComponent,
-    PhotoOwnerComponent
+    PhotoOwnerComponent,
+    FirstpageComponent
   ],
   imports: [
     BrowserModule,

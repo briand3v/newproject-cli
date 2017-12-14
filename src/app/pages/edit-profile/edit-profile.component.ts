@@ -63,11 +63,13 @@ export class EditProfileComponent implements OnInit {
   updateUser() {
     this.userService.updateUser(this.username.username, this.formUpdate)
       .subscribe((data) => this.userData = data);
+    this.router.navigate(['/user', this.username]);
   }
 
   goProfile() {
     this.router.navigate(['/user/' + this.username.username]);
   }
+
 
 
 }

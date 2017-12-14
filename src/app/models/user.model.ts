@@ -3,6 +3,7 @@ export class User {
     username: string;
     password: string;
     email: string;
+    profileName: string;
     constructor(obj: Object = {}) {
         Object.assign(this, obj);
     }

@@ -1,9 +1,12 @@
 
+
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+   background-image: url("https://i.pinimg.com/736x/01/c2/ea/01c2ea1c86b7a276dcc60da42459a31e--phone-wallpapers-tumblr-iphone-backgrounds-tumblr.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
     top: 100px;

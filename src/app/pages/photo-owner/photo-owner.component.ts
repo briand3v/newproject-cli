@@ -63,7 +63,7 @@ export class PhotoOwnerComponent implements OnInit {
   getUserInfo() {
     this.userService.getUserId(this.username).subscribe((data) => {
       this.dataUser = data;
-      if (this.username === 'brian_bmx') {
+      if (this.username) {
         this.checkOwner = true;
       } else {
         this.checkOwner = false;

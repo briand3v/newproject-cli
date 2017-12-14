@@ -14,7 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "heroku-prebuild": "rm -rf node_modules && npm cache clean --force",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {

@@ -21,15 +21,15 @@
 
 
   <div class="content-profile" *ngIf="dataUser">
-    <img class="profile-image" src="https://organicthemes.com/demo/profile/files/2012/12/profile_img.png" class="img-circle">
+    <img class="profile-image" src="http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif" class="img-circle">
+
+
     <div class="description-user">
       <div class="profile">
         <h1>{{dataUser.profileName}}</h1>
         <p>{{dataUser.description}}
         </p>
       </div>
-      <br>
-
       <div *ngIf="checkOwner">
 
         <div class="btn-edit">
@@ -43,9 +43,15 @@
 
 
   <div class="ui fluid three item menu">
-    <a class="item">Home</a>
-    <a class="item">Equipment</a>
-    <a class="item">Settings</a>
+    <a class="item">
+      <i class="big grid layout icon"></i>
+    </a>
+    <a class="item">
+      <i class="big archive icon"></i>
+    </a>
+    <a class="item">
+      <i class="big setting icon"></i>
+    </a>
   </div>
 
 

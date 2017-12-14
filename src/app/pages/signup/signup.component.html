@@ -29,6 +29,18 @@
               </div>
             </div>
 
+            <div class="field">
+              <label>Profile Name</label>
+              <div class="ui left icon input">
+                <input type="text" class="form-control" name="profilename" [(ngModel)]="user.profileName" #myProfileName="ngModel" required
+                />
+                <i class="address book icon"></i>
+              </div>
+              <!-- <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+                <p [hidden]="!myPassword.errors.required">Password required!!</p>
+              </div> -->
+            </div>
+
             <div class="btn-signup">
               <div class="ui big green labeled icon button " (click)="signup()">
                 <i class="signup icon"></i>Sign Up</div>
@@ -39,7 +51,7 @@
           Or
         </div>
         <div class="center aligned column">
-          <!-- <a class="ui blue submit button" routerLink="/login">Login</a> -->
+          <a class="ui blue submit button" routerLink="/login">Login</a>
         </div>
       </div>
     </form>
