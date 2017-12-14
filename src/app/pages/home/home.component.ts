@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { PhotoService } from '../../services/photo.service';
 
 import { FileUploader } from 'ng2-file-upload';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  baseUrl = 'http://localhost:3000';
+  baseUrl = environment.apiUrl;
   feedbackEnabled = false;
   processing = false;
   photo = {

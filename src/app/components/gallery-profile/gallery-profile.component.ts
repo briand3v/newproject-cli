@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-gallery-profile',
@@ -10,7 +11,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class GalleryProfileComponent implements OnInit {
 
   @Output() hide = new EventEmitter<string>();
-
+  baseUrl = environment.apiUrl;
   photos: Object = [];
   constructor(
     private photoService: PhotoService,

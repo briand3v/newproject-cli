@@ -8,7 +8,7 @@
 </div>
 
 <div class="contain-photos">
-  <img class="photos" *ngFor="let photo of photos" src="http://localhost:3000{{photo.img}}" (click)="photoOwner(photo)" alt="">
+  <img class="photos" *ngFor="let photo of photos" src="{{baseUrl}}/{{photo.img}}" (click)="photoOwner(photo)" alt="">
   <div class="description">
     <p>{{photo.description}}</p>
   </div>

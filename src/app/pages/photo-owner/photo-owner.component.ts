@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-photo-owner',
@@ -18,7 +19,7 @@ export class PhotoOwnerComponent implements OnInit {
   photoOwner: any;
   deleteMessage: string;
 
-
+  baseUrl = environment.apiUrl;
   comments: any;
 
   formComment = {
