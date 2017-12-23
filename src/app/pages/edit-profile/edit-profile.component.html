@@ -1,22 +1,23 @@
 <div class="submit-changes">
   <div class="x">
-    <i class="remove icon" (click)="goProfile()"></i>
+    <i class="big remove icon" (click)="goProfile()"></i>
   </div>
   <span class="grey-name">Edit Profile</span>
   <div class="v">
-    <i class="checkmark icon" (click)="updateUser()" (click)="goProfile()"></i>
+    <i class="big checkmark icon" (click)="updateUser()" (click)="goProfile()"></i>
   </div>
 </div>
 
-<div class="image-container">
+<div class="image-container" *ngIf="dataUser">
   <div class="ui segment">
-    <img class="ui top aligned" src="http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif" alt="">
+    <img class="img-circle" src={{baseUrl}}{{dataUser.filename}}>
     <div class="username">
       <span class="grey-name">Profile Name</span>
-      <p>brian_bmx</p>
+      <p>{{dataUser.profileName}}</p>
     </div>
   </div>
 </div>
+
 <div class="main">
   <div class="edit-container">
 

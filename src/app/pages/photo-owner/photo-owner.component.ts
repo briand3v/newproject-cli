@@ -80,6 +80,10 @@ export class PhotoOwnerComponent implements OnInit {
       });
   }
 
+  goToOtherUser() {
+    this.router.navigate(['/user', this.username]);
+  }
+
   ///////////////////////// comments ////////////////////////////////////
 
   addComment() {
@@ -92,5 +96,10 @@ export class PhotoOwnerComponent implements OnInit {
         console.log(this.comments);
     });
   }
+
+  goToGallery() {
+    this.router.navigate(['/gallery']);
+  }
+
 
 }

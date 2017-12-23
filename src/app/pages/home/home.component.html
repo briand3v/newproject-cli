@@ -1,13 +1,13 @@
 <div class="ui secondary pointing menu">
-  <a class="active item">Home</a>
-  <a class="item">Messages</a>
-  <a class="item">Friends</a>
+  <a class="item home">Home</a>
+  <a class="item home">Messages</a>
+  <a class="item home">Friends</a>
   <div class="right menu">
-    <a class="ui item" (click)="logOut()">Logout</a>
+    <a class="ui item home" (click)="logOut()">Logout</a>
   </div>
 </div>
 
-<div class="contain-photos">
+<div class="contain-photos" *ngIf="photo">
   <img class="photos" *ngFor="let photo of photos" src="{{baseUrl}}/{{photo.img}}" (click)="photoOwner(photo)" alt="">
   <!-- <div class="description">
     <p>{{photo.description}}</p>
@@ -26,13 +26,13 @@
     <!-- <div class="icons-container"> -->
 
     <div class="user-icon">
-      <i class="user icon" [routerLink]="['/user', user.username]"></i>
+      <i class="big user icon" (click)="goToProfile()"></i>
     </div>
     <div class="square-icon">
-      <i class="add square icon"></i>
+      <i class="big add square icon"></i>
     </div>
     <div class="list-layout">
-      <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
+      <i class="big list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
     </div>
   </div>
 </div>

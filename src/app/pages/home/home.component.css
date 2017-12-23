@@ -32,6 +32,7 @@ ul {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 .contain-photos {
     display: flex;
@@ -51,4 +52,8 @@ ul {
     
     justify-content: space-around;
     
+}
+
+.home {
+    font-size: 15px;
 }

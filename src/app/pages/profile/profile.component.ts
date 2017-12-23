@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   error: string;
   modal = true;
   collapse: any;
+  imgDefault = 'http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif';
 
 
   checkOwner: boolean;
@@ -82,14 +83,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // checkUser() {
-  //   if (this.username === 'brian_bmx') {
-  //     this.checkOwner = true;
-  //   } else {
-  //     this.checkOwner = false;
-  //   }
-  // }
-
 
   getUserInfo() {
     this.userService.getUserId(this.username).subscribe((data) => {
@@ -130,9 +123,6 @@ export class ProfileComponent implements OnInit {
   goToGallery() {
     this.router.navigate(['/gallery']);
   }
-
-
-
 
 
   logOut() {

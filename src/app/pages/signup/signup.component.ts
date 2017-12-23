@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     profileName: ''
   });
 
-  me: any;
+  userdata: any;
   error: string;
 
   constructor(
@@ -27,16 +27,8 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.authService.me().then((me) => this.me = me);
+    // this.authService.me().then((me) => this.userdata = me);
   }
-
-  // signup() {
-  //   this.authService.signup(this.user)
-  //     .subscribe(
-  //     () => this.router.navigate(['/user/']),
-  //     (err) => this.error = err
-  //     );
-  // }
 
 
   signup() {
@@ -45,6 +37,10 @@ export class SignupComponent implements OnInit {
       (data) => this.something = data,
       (err) => this.error = err
     );
+  }
+
+  goProfile() {
+    this.router.navigate(['/profile', this.user.username]);
   }
 
 }

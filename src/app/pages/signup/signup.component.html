@@ -36,13 +36,11 @@
                 />
                 <i class="address book icon"></i>
               </div>
-              <!-- <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-                <p [hidden]="!myPassword.errors.required">Password required!!</p>
-              </div> -->
+
             </div>
 
             <div class="btn-signup">
-              <div class="ui big green labeled icon button " routerLink="/login" (click)="signup()">
+              <div class="ui big green labeled icon button " (click)="goProfile()" (click)="signup()">
                 <i class="signup icon"></i>Sign Up</div>
             </div>
           </div>

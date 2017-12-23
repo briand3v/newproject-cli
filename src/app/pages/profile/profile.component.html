@@ -1,17 +1,17 @@
 <!-- <div *ngIf="checkOwner" class="text"> -->
 <div class="header">
   <div class="ui secondary pointing menu">
-    <a class="active item">
+    <a class="item home">
       Home
     </a>
-    <a class="item">
+    <a class="item home">
       Messages
     </a>
-    <a class="item">
+    <a class="item home">
       Friends
     </a>
     <div class="right menu">
-      <a class="ui item" (click)="logOut()">
+      <a class="ui item home" (click)="logOut()">
         Logout
       </a>
     </div>
@@ -21,7 +21,10 @@
 
 
   <div class="content-profile" *ngIf="dataUser">
-    <img class="profile-image" src="http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif" class="img-circle">
+    <div class="image">
+      <img class="ui tiny image img-circle" src={{baseUrl}}{{dataUser.filename}}>
+    </div>
+
 
 
     <div class="description-user">
@@ -54,8 +57,6 @@
     </a>
   </div>
 
-
-
 </div>
 
 
@@ -64,26 +65,6 @@
 
 
 <!-- .....................upload file........................... -->
-
-
-<!-- <sm-modal title="Photo" class="" #myModal>
-  <modal-content>
-
-    <div class="ui segment">
-      <h2>Upload your photo</h2>
-      
-    </div>
-  </modal-content>
-  <modal-actions>
-    <div class="ui buttons">
-      <div class="ui button primary" (click)="myModal.hide()" (click)="goToGallery()">Close modal</div>
-    </div>
-  </modal-actions>
-</sm-modal> -->
-
-
-
-
 
 <div class=" coll">
   <div [suiCollapse]="!collapse">
@@ -121,13 +102,13 @@
 
   <div class="ui bottom attached warning message">
     <div class="user-icon">
-      <i class="user icon"></i>
+      <i class="big user icon"></i>
     </div>
     <div class="square-icon">
-      <i class="add square icon" (click)="collapse = !collapse"></i>
+      <i class="big add square icon" (click)="collapse = !collapse"></i>
     </div>
     <div class="list-layout">
-      <i class="list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
+      <i class="big list layout icon" (click)="goToGallery()"></i>
     </div>
   </div>
 </div>

@@ -33,11 +33,13 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { GalleryProfileComponent } from './components/gallery-profile/gallery-profile.component';
 import { PhotoOwnerComponent } from './pages/photo-owner/photo-owner.component';
 import { FirstpageComponent } from './pages/firstpage/firstpage.component';
+import { SetProfileComponent } from './pages/set-profile/set-profile.component';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [RequireAnonGuard], component: FirstpageComponent },
   { path: 'signup', canActivate: [RequireAnonGuard], component: SignupComponent },
   { path: 'login', canActivate: [RequireAnonGuard], component: LoginComponent },
+  { path: 'profile/:id', component: SetProfileComponent },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/:id/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'gallery', component: HomeComponent, canActivate: [AuthGuard] },
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     EditProfileComponent,
     GalleryProfileComponent,
     PhotoOwnerComponent,
-    FirstpageComponent
+    FirstpageComponent,
+    SetProfileComponent
   ],
   imports: [
     BrowserModule,
