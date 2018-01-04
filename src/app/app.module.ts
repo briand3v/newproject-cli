@@ -34,6 +34,9 @@ import { GalleryProfileComponent } from './components/gallery-profile/gallery-pr
 import { PhotoOwnerComponent } from './pages/photo-owner/photo-owner.component';
 import { FirstpageComponent } from './pages/firstpage/firstpage.component';
 import { SetProfileComponent } from './pages/set-profile/set-profile.component';
+import { VisitorComponent } from './pages/visitor/visitor.component';
+
+
 
 const appRoutes: Routes = [
   { path: '', canActivate: [RequireAnonGuard], component: FirstpageComponent },
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
   { path: 'login', canActivate: [RequireAnonGuard], component: LoginComponent },
   { path: 'profile/:id', component: SetProfileComponent },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'visitor/:id', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/:id/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'gallery', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'photo/owner/:id/:idPhoto', component: PhotoOwnerComponent, canActivate: [AuthGuard] }
@@ -58,7 +62,10 @@ const appRoutes: Routes = [
     GalleryProfileComponent,
     PhotoOwnerComponent,
     FirstpageComponent,
-    SetProfileComponent
+    SetProfileComponent,
+    VisitorComponent,
+
+
   ],
   imports: [
     BrowserModule,

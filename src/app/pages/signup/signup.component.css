@@ -57,4 +57,7 @@
     display: flex;
     justify-content: center;
   }
-  
+  .column {
+    display: flex;
+    justify-content: center;
+  }

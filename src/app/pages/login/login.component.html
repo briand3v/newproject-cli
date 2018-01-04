@@ -3,9 +3,9 @@
 
   <div class="contain-form">
     <form #myForm="ngForm" novalidate>
-      <div class="ui two column middle aligned very relaxed stackable grid">
+      <div class="">
         <div class="column">
-          <div class="ui form">
+          <div class="form">
             <div class="field">
               <label>Username</label>
               <div class="ui left icon input">
@@ -48,9 +48,9 @@
       </div>
     </form>
 
-    <div class="input">
-      <div class="ui animated button" tabindex="0">
-        <div class="visible content" (click)="back()">Back</div>
+    <div class="input back">
+      <div class="ui button" (click)="back()" tabindex="0">
+        <div class="visible content">Back</div>
         <div class="hidden content">
           <i class="arrow left icon"></i>
         </div>

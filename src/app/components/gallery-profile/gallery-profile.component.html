@@ -1,3 +1,6 @@
 <div class="contain">
-  <img *ngFor="let photo of photos" src="{{baseUrl}}/{{photo.img}}" (click)="clickPhoto(photo)">
+
+  <img src="{{baseUrl}}/{{photo.img}}" *ngFor="let photo of photos" (click)="clickPhoto(photo)">
+  <!-- <div *ngFor="let photo of photos" style="background-image: url(`{{baseUrl}}{{photo.img}}`); background-size: cover; width: 80px; height: 80px;"></div> -->
+
 </div>

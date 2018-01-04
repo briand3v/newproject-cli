@@ -1,95 +1,52 @@
-<p>
-  set-profile works!
-</p>
 <div class="main">
+  <div class="all">
 
-  <div class="image">
-    <img class="ui small circular image" src="../../../assets/img/profileImage.png">
+    <div class="image">
+      <img class="ui small circular image" src="../../../assets/img/profileImage.png">
+    </div>
+
+
+    <form (ngSubmit)="submitForm(myForm)" class="ui reply form" #myForm="ngForm" novalidate>
+
+      <!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" class="inputfile" /> -->
+
+      <div class="button-upload">
+        <div class="fileUpload btn btn-primary">
+          <span>Upload</span>
+          <input id="uploadBtn" class="upload" type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader"
+            type="file" />
+        </div>
+      </div>
+
+      <div class="contain">
+        <div class="form-contain">
+
+          <div class="ui transparent huge icon input">
+            <input type="text" placeholder="Name..." name="firstName" [(ngModel)]="userProfile.firstName" #myfirstName="ngModel" required
+              minlength="4" [disabled]="processing">
+          </div>
+
+
+          <div class="ui transparent huge icon input">
+            <input type="text" placeholder="Last name..." name="lastName" [(ngModel)]="userProfile.lastName" #mylastName="ngModel" required
+              minlength="4" [disabled]="processing">
+          </div>
+
+
+          <div class="ui transparent huge icon input">
+            <input type="text" placeholder="Profile name..." name="profileName" [(ngModel)]="userProfile.profileName" #myprofileName="ngModel"
+              required minlength="4" [disabled]="processing">
+          </div>
+
+        </div>
+      </div>
+      <div class="field submit">
+        <!-- <button class="ui primary button" type="submit" [disabled]="processing" (click)="goUserProfile()">Save</button> -->
+        <button class="ui green button big" type="submit" [disabled]="processing" (click)="goUserProfile()">Save</button>
+        <div *ngIf="feedbackEnabled && myForm.invalid">
+          <p class="validation">there are errors in the form, please review the fields</p>
+        </div>
+      </div>
+    </form>
   </div>
-
-
-  <form (ngSubmit)="submitForm(myForm)" class="ui reply form" #myForm="ngForm" novalidate>
-
-    <!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" class="inputfile" /> -->
-
-    <div class="button-upload">
-      <div class="fileUpload btn btn-primary">
-        <span>Upload</span>
-        <input id="uploadBtn" class="upload" type="file" name="file" [disabled]="processing" ng2FileSelect [uploader]="uploader"
-          type="file" />
-      </div>
-    </div>
-
-    <div class="contain">
-      <div class="form-contain">
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Name..." name="firstName" [(ngModel)]="userProfile.firstName" #myfirstName="ngModel" required
-            minlength="4" [disabled]="processing">
-        </div>
-
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Last name..." name="lastName" [(ngModel)]="userProfile.lastName" #mylastName="ngModel" required
-            minlength="4" [disabled]="processing">
-        </div>
-
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Profile name..." name="profileName" [(ngModel)]="userProfile.profileName" #myprofileName="ngModel"
-            required minlength="4" [disabled]="processing">
-        </div>
-
-      </div>
-    </div>
-    <div class="field submit">
-
-      <button class="ui primary button" type="submit" [disabled]="processing" (click)="goUserProfile()">Save</button>
-      <div *ngIf="feedbackEnabled && myForm.invalid">
-        <p class="validation">there are errors in the form, please review the fields</p>
-      </div>
-    </div>
-  </form>
-
-
-
-
-
-  <!-- <form (ngSubmit)="submitForm(myForm)" class="ui reply form" #myForm="ngForm" novalidate>
-    <div class="contain">
-      <div class="form-contain">
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Name..." name="firstName" [(ngModel)]="userProfile.firstName" #myfirstName="ngModel" required
-            minlength="4" [disabled]="processing">
-        </div>
-
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Last name..." name="lastName" [(ngModel)]="userProfile.lastName" #mylastName="ngModel" required
-            minlength="4" [disabled]="processing">
-        </div>
-
-
-        <div class="ui transparent huge icon input">
-          <input type="text" placeholder="Profile name..." name="profileName" [(ngModel)]="userProfile.profileName" #myprofileName="ngModel"
-            required minlength="4" [disabled]="processing">
-        </div>
-
-      </div>
-    </div>
-    <div class="field submit">
-      <button type="submit" [disabled]="processing">Save</button>
-      <div *ngIf="feedbackEnabled && myForm.invalid">
-        <p class="validation">there are errors in the form, please review the fields</p>
-      </div>
-    </div>
-  </form> -->
-
-
-
-
-
-
-
 </div>

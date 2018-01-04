@@ -10,7 +10,14 @@
 
 <div class="image-container" *ngIf="dataUser">
   <div class="ui segment">
-    <img class="img-circle" src={{baseUrl}}{{dataUser.filename}}>
+
+    <div *ngIf="currentImage">
+      <img class="ui tiny image img-circle" src={{baseUrl}}{{dataUser.filename}}>
+    </div>
+    <div *ngIf="checkFotoDefault">
+      <img class="ui tiny image img-circle" src="../../../assets/img/profileImage.png">
+    </div>
+
     <div class="username">
       <span class="grey-name">Profile Name</span>
       <p>{{dataUser.profileName}}</p>

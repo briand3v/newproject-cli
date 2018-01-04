@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/photo/owner/', photo.username, photo._id]);
   }
 
-  goToProfile() {
+  goToMeProfile() {
     this.router.navigate(['/user', this.user.username]);
   }
 

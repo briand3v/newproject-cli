@@ -57,3 +57,54 @@ ul {
 .home {
     font-size: 15px;
 }
+
+
+
+
+
+
+
+
+.navbar {
+    display: flex;
+    overflow: hidden;
+    margin: 0px;
+    background-color: #333;  
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navbar i {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: 800px) {
+    .navbar:not(:first-child) {display: none;}
+    
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+}
+.pulsar{
+    width: 45px;
+    height: 45px;
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1081-200.png");
+    background-size: cover;
+   
+}
+.menu {
+    height: 8%;
+}
+a{
+    font-size: 20px;
+}

@@ -1,11 +1,30 @@
-<div class="ui secondary pointing menu">
-  <a class="item home">Home</a>
+<!-- <div class="ui secondary pointing menu">
+  <a class="item home" (click)="goToMeProfile()">
+    Profile
+  </a>
+  <a class="item home">
+    Home
+  </a>
   <a class="item home">Messages</a>
   <a class="item home">Friends</a>
   <div class="right menu">
     <a class="ui item home" (click)="logOut()">Logout</a>
   </div>
+</div> -->
+
+
+<div class="ui top menu ">
+  <div class="icon">
+    <div class="pulsar">
+    </div>
+  </div>
+  <a class="item" (click)="goToMeProfile()">Me</a>
+  <div class="right menu">
+    <a class="item" (click)="logOut()">Log out</a>
+    <a class="item">Help</a>
+  </div>
 </div>
+
 
 <div class="contain-photos" *ngIf="photo">
   <img class="photos" *ngFor="let photo of photos" src="{{baseUrl}}/{{photo.img}}" (click)="photoOwner(photo)" alt="">
@@ -21,12 +40,12 @@
 
 
 <!-- -///////////////////// icons-bar ///////////////////////////////////// -->
-<div class="footer">
+<!-- <div class="footer">
   <div class="ui bottom attached warning message">
-    <!-- <div class="icons-container"> -->
+    
 
     <div class="user-icon">
-      <i class="big user icon" (click)="goToProfile()"></i>
+      <i class="big user icon" (click)="goToMeProfile()"></i>
     </div>
     <div class="square-icon">
       <i class="big add square icon"></i>
@@ -35,4 +54,12 @@
       <i class="big list layout icon" routerLink="/gallery" routerLinkActive="active"></i>
     </div>
   </div>
+</div> -->
+
+
+<div class="navbar" id="myNavbar">
+  <i class="big user icon" (click)="goToMeProfile()"></i>
+  <i class="big add square icon"></i>
+  <i class="big list layout icon" routerLink="/gallery"></i>
+  <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
 </div>

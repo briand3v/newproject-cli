@@ -1,23 +1,39 @@
 
-.content-profile {
-    display: flex;
-    margin: 20px;
-}
-.description-user {
-    margin-left: 17px;
+
+html {
+    overflow: auto;
 }
 h1 {
-    font-size: 20px;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 p{
+    font-size: 25px;
+    color: rgb(121, 121, 121);
     margin-bottom: 40px;    
 }
-
-/* img {
-    width: 15%;
-    height: 15%;
-} */
+a{
+    font-size: 20px;
+}
+.icon {
+    display: flex;
+    align-items: center;
+}
+.pulsar{
+    width: 45px;
+    height: 45px;
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1081-200.png");
+    background-size: cover;
+   
+}
+.content-profile {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+.description-user {
+    margin-left: 50px;
+}
 
 .profile {
     right: 50px;
@@ -25,7 +41,7 @@ p{
 
 .btn-edit {
     display: flex;
-    justify-content: space-between;
+    
 }
 .icons-bar{
     position: fixed;
@@ -71,22 +87,10 @@ p{
 .header {
     position: relative;
     margin-bottom: 3px;
+    width: 100%;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    height: 5%;;
-    width: 100%;
-    justify-content: space-around;
-    flex-direction: row;
-    align-content: center;
-    text-align: center;
-    border-top: 1px solid #888787;
-    background-color:white;
-}
+
 .message {
     display: flex;
     width: 100vw;
@@ -119,3 +123,56 @@ p{
     font-size: 15px;
 }
 
+
+
+
+
+
+
+
+
+
+.navbar {
+    display: flex;
+    overflow: hidden;
+    margin: 0px;
+    background-color: #333;  
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navbar i {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: 800px) {
+    .navbar:not(:first-child) {display: none;}
+    
+  }
+
+  img {
+      width: 15%;
+      height: 15%;;
+  }
+  
+@media (max-width:800px){
+    img{
+      width: 15%;
+    }
+}
+
+
+.menu {
+    height: 8%;
+}
+
+
+  

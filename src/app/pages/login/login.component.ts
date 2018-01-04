@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     password: ''
   });
 
+  userLogin: any;
 
   error: string;
 
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
 
   back() {
     this.router.navigate(['/signup']);
+    console.log('adasdasdsada');
   }
 
 }

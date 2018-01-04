@@ -21,6 +21,9 @@ export class PhotoOwnerComponent implements OnInit {
 
   baseUrl = environment.apiUrl;
   comments: any;
+  comment: any;
+  clickComment = false;
+
 
   formComment = {
     comment: ''
@@ -38,8 +41,10 @@ export class PhotoOwnerComponent implements OnInit {
     this.idPhoto();
     this.getPhotoByOwner();
     this.getUserInfo();
+    this.showComments();
   }
 
+  // ------------------------------ USER INFO
   idUser() {
     this.route.params.subscribe(params => {
       this.username = params['id']; // --> Name must match wanted parameter
@@ -53,7 +58,7 @@ export class PhotoOwnerComponent implements OnInit {
     });
   }
 
-
+  // --------------------------------OWNER PHOTO
   getPhotoByOwner() {
     //
     this.photoService.showPhotoByOwner(this.username, this.photoId).subscribe((data) => this.photoOwner = data);
@@ -81,24 +86,37 @@ export class PhotoOwnerComponent implements OnInit {
   }
 
   goToOtherUser() {
-    this.router.navigate(['/user', this.username]);
+    this.router.navigate(['/visitor', this.username]);
   }
 
-  ///////////////////////// comments ////////////////////////////////////
+  // -------------------------------comments
 
   addComment() {
-    this.photoService.addComment(this.photoId, this.formComment).subscribe();
+    this.photoService.addComment(this.photoId, this.formComment)
+      .subscribe((comment) => { this.comment = comment, this.formComment.comment = '', this.showComments(); });
     //
   }
   showComments() {
     this.photoService.showComments(this.photoId).subscribe((comments) => {
       this.comments = comments,
-        console.log(this.comments);
+        console.log(this.comments.comments);
     });
+  }
+
+  clickComments() {
+    if (!this.clickComment) {
+      this.clickComment = true;
+    } else {
+      this.clickComment = false;
+    }
   }
 
   goToGallery() {
     this.router.navigate(['/gallery']);
+  }
+
+  goToOwner(ownerComment) {
+    this.router.navigate(['/user/', ownerComment]);
   }
 
 

@@ -20,12 +20,36 @@
       <i class="heart outline like icon"></i>
       17 likes
     </span>
-    <i class="comment icon" (click)="showComments()"></i>
+    <i class="comment icon" (click)="clickComments()"></i>
     3 comments
   </div>
   <div class="content">
     {{photoOwner.description}}
   </div>
+
+
+  <div *ngIf="clickComment">
+
+    <div class="ui list comments-contain" *ngIf="comments">
+      <div *ngFor="let comment of comments.comments">
+        <div class="item">
+          <img class="ui avatar image" src="">
+          <div class="content">
+            <a class="header" (click)="goToOwner(comment.owner)">{{comment.owner}}</a>
+            <div class="description">{{comment.description}}
+              <a>
+                <b>Pulsar user</b>
+              </a> just now.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
   <div class="content">
     <div class="ui large transparent icon input">
 
@@ -34,6 +58,7 @@
         <i class="heart outline icon"></i>
         <button class="ui primary button" (click)="addComment()">Save</button>
       </form>
+
     </div>
   </div>
 </div>

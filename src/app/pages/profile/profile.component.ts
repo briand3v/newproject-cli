@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from '../../services/photo.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
+// Services
+import { PhotoService } from '../../services/photo.service';
 import { AuthService } from '../../services/auth.service';
-
-import { IPopup } from 'ng2-semantic-ui';
-
-import { FileUploader } from 'ng2-file-upload';
-
-import { error } from 'util';
 import { UserService } from '../../services/user.service';
 
+// upload images
+import { IPopup } from 'ng2-semantic-ui';
+import { FileUploader } from 'ng2-file-upload';
+import { error } from 'util';
+
+
+// enviornment
 import { environment } from '../../../environments/environment';
 
 
@@ -32,10 +35,15 @@ export class ProfileComponent implements OnInit {
   error: string;
   modal = true;
   collapse: any;
-  imgDefault = 'http://www.lumineers.me/images/core/profile-image-zabadnesterling.gif';
 
+  currentImage: any;
+
+  checkFotoPorfile = false;
+  checkFotoDefault = false;
 
   checkOwner: boolean;
+
+  checkEdit = false;
 
 
 
@@ -45,7 +53,6 @@ export class ProfileComponent implements OnInit {
   photo = {
     filename: '',
     description: '',
-    // owner: this.value,
   };
   uploader: FileUploader = new FileUploader({
     url: `${this.baseUrl}/upload`,
@@ -57,7 +64,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    // private params: Params
+
   ) { }
 
 
@@ -69,16 +76,17 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.me();
     this.idUser();
     this.getUserInfo();
-    // this.checkUser();
+    // this.checkEditButton();
     console.log(this.photos);
   }
 
 
   idUser() {
     this.route.params.subscribe(params => {
-      this.username = params['id']; // --> Name must match wanted parameter
+      this.username = params['id'];
       console.log(this.username);
     });
   }
@@ -87,12 +95,11 @@ export class ProfileComponent implements OnInit {
   getUserInfo() {
     this.userService.getUserId(this.username).subscribe((data) => {
       this.dataUser = data;
-      if (this.username) {
-        this.checkOwner = true;
+      if (this.dataUser.filename === undefined) {
+        this.checkFotoDefault = true;
       } else {
-        this.checkOwner = false;
+        this.currentImage = true;
       }
-      console.log(this.checkOwner);
     });
   }
 
@@ -136,13 +143,33 @@ export class ProfileComponent implements OnInit {
       );
     console.log(this.user);
   }
-  ////////////////////////////////////////////// profile
 
+  checkEditButton() {
+    if (this.user.username === this.username) {
+      this.checkEdit = true;
 
-  // profile
+    } else {
+      this.checkEdit = false;
+    }
+  }
 
   goGallery() {
     this.router.navigate(['/gallery']);
   }
 
+  goToMeProfile() {
+    this.router.navigate(['/user', this.user.username]);
+    console.log(this.user.username);
+  }
+
+  me() {
+    this.authService.me().then((user) => {
+      this.user = user;
+      if (this.user.username === this.username) {
+        this.checkEdit = true;
+      } else {
+        this.checkEdit = false;
+      }
+    });
+  }
 }

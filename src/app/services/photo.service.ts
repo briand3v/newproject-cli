@@ -70,7 +70,7 @@ export class PhotoService {
   showComments(photoId) {
     const options = new RequestOptions();
     options.withCredentials = true;
-    return this.http.get(apiUrl + `/photo/owner/${photoId}/comments`, options)
+    return this.http.get(apiUrl + `/photo/owner/${photoId}`, options)
       .map((res: Response) => res.json());
   }
 

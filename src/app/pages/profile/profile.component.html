@@ -1,62 +1,67 @@
-<!-- <div *ngIf="checkOwner" class="text"> -->
-<div class="header">
-  <div class="ui secondary pointing menu">
-    <a class="item home">
-      Home
+<!-- <div class="ui secondary pointing menu">
+  <a class="item home" (click)="goToMeProfile()">
+    Profile
+  </a>
+  <a class="item home" (click)="goToGallery()">
+    Home
+  </a>
+  <a class="item home">
+    Messages
+  </a>
+  <a class="item home">
+    Friends
+  </a>
+  <div class="right menu">
+    <a class="ui item home" (click)="logOut()">
+      Logout
     </a>
-    <a class="item home">
-      Messages
-    </a>
-    <a class="item home">
-      Friends
-    </a>
-    <div class="right menu">
-      <a class="ui item home" (click)="logOut()">
-        Logout
-      </a>
+  </div>
+</div> -->
+
+
+
+
+<div class="ui top menu ">
+  <div class="icon">
+    <div class="pulsar">
     </div>
   </div>
-  <!-- </div> -->
+  <a class="item" (click)="goToGallery()">Home</a>
+  <div class="right menu">
+    <a class="item" (click)="logOut()">Log out</a>
+    <a class="item">Help</a>
+  </div>
+</div>
 
 
-
+<div class="header">
   <div class="content-profile" *ngIf="dataUser">
-    <div class="image">
-      <img class="ui tiny image img-circle" src={{baseUrl}}{{dataUser.filename}}>
-    </div>
-
-
-
+    <img *ngIf="currentImage" class="ui image img-circle" src={{baseUrl}}{{dataUser.filename}}>
+    <img *ngIf="checkFotoDefault" class="ui image img-circle" src="../../../assets/img/profileImage.png">
     <div class="description-user">
       <div class="profile">
         <h1>{{dataUser.profileName}}</h1>
         <p>{{dataUser.description}}
         </p>
       </div>
-      <div *ngIf="checkOwner">
-
-        <div class="btn-edit">
-          <button class=" edit ui blue basic button" (click)="editClick()">edit</button>
+      <div>
+        <div class="btn-edit" *ngIf="checkEdit">
+          <button class=" edit huge ui button" (click)="editClick()">edit</button>
         </div>
-
       </div>
-
     </div>
   </div>
-
-
   <div class="ui fluid three item menu">
     <a class="item">
-      <i class="big grid layout icon"></i>
+      <i class="small grid layout icon"></i>
     </a>
-    <a class="item">
-      <i class="big archive icon"></i>
+    <a class="item" (click)="collapse = !collapse">
+      <i class="photo center small icon"></i>
     </a>
-    <a class="item">
-      <i class="big setting icon"></i>
+    <a class="item" (click)="goToGallery()">
+      <i class="image icon"></i>
     </a>
   </div>
-
 </div>
 
 
@@ -98,17 +103,9 @@
   </div>
 </div>
 
-<div class="footer">
-
-  <div class="ui bottom attached warning message">
-    <div class="user-icon">
-      <i class="big user icon"></i>
-    </div>
-    <div class="square-icon">
-      <i class="big add square icon" (click)="collapse = !collapse"></i>
-    </div>
-    <div class="list-layout">
-      <i class="big list layout icon" (click)="goToGallery()"></i>
-    </div>
-  </div>
+<div class="navbar" id="myNavbar">
+  <i class="big user icon" (click)="goToMeProfile()"></i>
+  <i class="big add square icon" (click)="collapse = !collapse"></i>
+  <i class="big list layout icon" (click)="goToGallery()"></i>
+  <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
 </div>

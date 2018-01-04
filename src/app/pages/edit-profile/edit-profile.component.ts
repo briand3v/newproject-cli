@@ -17,6 +17,9 @@ export class EditProfileComponent implements OnInit {
 
   // @ViewChild('popup1') popup1: Popup;
 
+  currentImage: any;
+  checkFotoPorfile = false;
+  checkFotoDefault = false;
   baseUrl = environment.apiUrl;
 
   formUpdate = {
@@ -53,9 +56,15 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+
   getUserInfo() {
     this.userService.getUserId(this.userParam).subscribe((data) => {
       this.dataUser = data;
+      if (this.dataUser.filename === undefined) {
+        this.checkFotoDefault = true;
+      } else {
+        this.currentImage = true;
+      }
     });
   }
 
